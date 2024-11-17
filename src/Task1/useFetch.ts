@@ -3,14 +3,14 @@ import { RefetchParams } from './types';
 import { prepareParams } from './utils';
 
 export const useFetch = <Data, Error>(url: string) => {
-  const [data, setData] = useState<Data | null>(null);
+  const [data, setData] = useState<Data>();
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const fetchData = (paramsStr: string) => {
+  const fetchData = (params: RefetchParams['params'] = {}) => {
     setIsLoading(true);
 
-    fetch(url + paramsStr)
+    fetch(url + prepareParams(params))
       .then((res) => {
         if (res.status !== 200) {
           throw new Error();
@@ -21,7 +21,7 @@ export const useFetch = <Data, Error>(url: string) => {
       .then(setData)
       .catch((err) => {
         setError(err);
-        setData(null);
+        setData(undefined);
       })
       .finally(() => {
         setIsLoading(false);
@@ -29,11 +29,11 @@ export const useFetch = <Data, Error>(url: string) => {
   };
 
   useEffect(() => {
-    fetchData('');
+    fetchData();
   }, []);
 
   const refetch = (refetchParams: RefetchParams) => {
-    fetchData(prepareParams(refetchParams.params));
+    fetchData(refetchParams.params);
   };
 
   return {
