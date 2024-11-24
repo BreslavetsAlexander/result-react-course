@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { Task6 } from './Task6';
+import { Task1 } from './Task1';
 
 export const App: FC = () => {
   return (
     <div>
-      <Task6 />
+      <Task1 />
     </div>
   );
 };
