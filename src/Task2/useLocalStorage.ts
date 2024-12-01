@@ -20,6 +20,7 @@ export const useLocalStorage: UseLocalStorage = (key) => {
   };
 
   const removeItem = () => {
+    setValue(null);
     localStorage.removeItem(key);
   };
 
