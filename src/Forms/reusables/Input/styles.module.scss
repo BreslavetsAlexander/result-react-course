@@ -1,0 +1,122 @@
+:root {
+  /* Icon Sizes */
+  --icon-size-xs: 1rem;
+  --icon-size-sm: 1.25rem;
+  --icon-size-md: 1.5rem;
+  --icon-size-lg: 1.75rem;
+  --icon-size-xl: 2rem;
+
+  /* Input Heights */
+  --input-height-xs: 2rem;
+  --input-height-sm: 2.5rem;
+  --input-height-md: 3rem;
+  --input-height-lg: 3.5rem;
+  --input-height-xl: 4rem;
+
+  --icon-spacing: 0.5rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.asterisk {
+  color: #ff4d4f;
+}
+
+.fieldWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  left: var(--icon-spacing);
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--icon-size, 1.25rem);
+  height: var(--icon-size, 1.25rem);
+  font-size: var(--icon-size, 1.25rem);
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  height: var(--input-height-sm);
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.2rem;
+
+  &.xsSize {
+    --icon-size: var(--icon-size-xs);
+    height: var(--input-height-xs);
+  }
+
+  &.mdSize {
+    --icon-size: var(--icon-size-md);
+    height: var(--input-height-md);
+  }
+
+  &.lgSize {
+    --icon-size: var(--icon-size-lg);
+    height: var(--input-height-lg);
+  }
+
+  &.xlSize {
+    --icon-size: var(--icon-size-xl);
+    height: var(--input-height-xl);
+  }
+
+  &.xsRadius {
+    border-radius: 0.1rem;
+  }
+
+  &.mdSize {
+    border-radius: 0.3rem;
+  }
+
+  &.lgSize {
+    border-radius: 0.4rem;
+  }
+
+  &.xlSize {
+    border-radius: 0.5rem;
+  }
+
+  &.unstyled {
+    border: none;
+    border-radius: none;
+  }
+
+  &.withIcon {
+    padding-left: calc(var(--icon-size, 1.25rem) + 2 * var(--icon-spacing));
+  }
+}
+
+.errorMessage {
+  color: #ff4d4f;
+  font-size: 0.875rem;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.inputError {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 0 1px #ff4d4f;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ff7875;
+  }
+}
