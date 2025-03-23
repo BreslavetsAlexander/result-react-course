@@ -1,6 +1,15 @@
 import { FC } from 'react';
-import { Forms } from './Forms';
+import { useRoutes } from 'react-router';
+import { ROUTER } from './constants/router';
+import { Navigation } from './components/Navigation';
 
 export const App: FC = () => {
-  return <Forms />;
+  const routes = useRoutes(ROUTER);
+
+  return (
+    <div>
+      <Navigation />
+      {routes}
+    </div>
+  );
 };
